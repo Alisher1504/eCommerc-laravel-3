@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\User;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -15,7 +16,15 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->foreginId('order_id')->references('id')->on('orders');
+            $table->decimal('amout', 12, 2);
+            $table->string('status', 45);
+            $table->string('type', 45);
+
             $table->timestamps();
+
+            $table->foreignIdFor(User::class, 'created_by');
+            $table->foreignIdFor(User::class, 'updated_by');
         });
     }
 
