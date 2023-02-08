@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->decimal('total_price', 20, 2);
+            $table->decimal('total_price', 20, 2);
+            $table->foregnIdFor(User::class, 'created_by')->nullable();
+            $table->foregnIdFor(User::class, 'updated_by')->nullable();
             $table->timestamps();
         });
     }
