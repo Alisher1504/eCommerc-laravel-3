@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->foreginId('order_id')->references('id')->on('orders');
-            $table->foreginId('product_id')->references('id')->on('products');
+            $table->foreignId('order_id')->references('id')->on('orders');
+            $table->foreignId('product_id')->references('id')->on('products');
             $table->integer('quantity');
             $table->decimal('unit_price');
 

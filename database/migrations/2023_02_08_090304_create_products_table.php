@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\User;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -23,10 +24,10 @@ return new class extends Migration
             $table->integer('image_size')->nullable();
             $table->longText('description')->nullable();
             $table->decimal('price', 10, 2);    
-            $table->foregnIdFor(User::class, 'created_by')->nullable();    
-            $table->foregnIdFor(User::class, 'updated_by')->nullable();    
+            $table->foreignIdFor(User::class, 'created_by')->nullable();    
+            $table->foreignIdFor(User::class, 'updated_by')->nullable();    
             $table->softDeletes();
-            $table->foregnIdFor(User::class, 'deleted_by')->nullable();  
+            $table->foreignIdFor(User::class, 'deleted_by')->nullable();  
 
 
             $table->timestamps();
